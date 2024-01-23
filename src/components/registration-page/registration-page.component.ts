@@ -46,20 +46,19 @@ export class RegistrationPageComponent {
     if (this.registrationForm.valid) {
       // send request
       this.profileService.registerUser().subscribe((response: IUserRegistrationResponse) => {
-        console.log(`response -> ${response}`);
         if (response.success) {
           localStorage.setItem('registrationToken', 'true');
           this.router.navigate(['profile']);
           this.snackBar.open('Registration Successful!', 'dismiss', 
           {
-            duration: 100000,
+            duration: 5000,
             horizontalPosition: 'end',
             verticalPosition: 'top',
             panelClass: ['success-snackbar']
           });
         } else {
           this.snackBar.open('Backend Error, Please try again', 'dismiss', 
-          { duration: 4000,
+          { duration: 5000,
             horizontalPosition: 'end',
             verticalPosition: 'top',
             panelClass: ['fail-snackbar']

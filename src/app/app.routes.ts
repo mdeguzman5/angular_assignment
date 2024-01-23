@@ -7,6 +7,5 @@ import { ProfileGuard } from '@services/profile-guard/profile-guard';
 export const routes: Routes = [
   { path: 'register', component: RegistrationPageComponent},
   { path: 'profile', component: ProfilePageComponent, canActivate: [() => inject(ProfileGuard).canActivateProfilePage()], },
-  // { path: 'profile', component: ProfilePageComponent, canActivate: [() => inject(ProfileGuard).canActivateProfilePage()], },
   { path: '**', redirectTo: 'register', pathMatch: 'full' },
 ];

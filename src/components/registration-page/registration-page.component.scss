@@ -1,0 +1,59 @@
+.main-header {
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  .form-card-container {
+    width: 80%;
+    align-items: center;
+    background: #c1c0ce;
+    border-radius: 10px;
+
+    // tablets
+    @media only screen and (max-width: 768px) and (min-width: 601px) {
+      width: 90%;
+    }
+
+    // mobile
+    @media only screen and (max-width: 600px) {
+      width: 95%;
+    }
+
+    .form-section {
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 1rem;
+
+      // mobile and tablets
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+mat-card-title {
+    margin: 20px 0;
+    color: black;
+}
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.action-button {
+  display: flex;
+  justify-content: flex-end;
+}

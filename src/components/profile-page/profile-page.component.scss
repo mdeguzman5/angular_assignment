@@ -1,0 +1,18 @@
+.main-header {
+  text-align: center;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5% auto;
+
+  .profile-details {
+    padding: 15px 15px;
+    background-color: #c1c0ce;;
+  }
+}

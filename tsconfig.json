@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -22,7 +23,19 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@environments/*": ["src/environments/*"],
+      "@environments": ["src/environments"],
+      "@models/*": ["src/models/*"],
+      "@models": ["src/models"],
+      "@mocks/*": ["src/mocks/*"],
+      "@mocks": ["src/mocks"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services"]
+    },
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

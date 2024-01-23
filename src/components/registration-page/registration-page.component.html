@@ -1,0 +1,33 @@
+<h1 class="main-header">Registration Page</h1>
+<div class="form-container">
+  <mat-card class="form-card-container">
+    <mat-card-title>Please Enter your Details</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="registrationForm" class="form-section" (submit)="submitForm()">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Ex. johndoe@abc.com" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Bio</mat-label>
+          <textarea maxlength="100" type="text" matInput placeholder="Write something interesting about you..." formControlName="bio" rows="4"></textarea>
+        </mat-form-field>
+
+        <div class="action-button">
+          <button mat-raised-button color="primary" [disabled]="!registrationForm.valid" type="submit">Register</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

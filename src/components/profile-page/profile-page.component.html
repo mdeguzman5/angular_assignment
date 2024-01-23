@@ -1,0 +1,8 @@
+<h1 class="main-header">User Profile</h1>
+<div class="profile-section" *ngIf="userProfileDetails">
+  <div class="profile-details">
+    <h4>{{ userProfileDetails.name }}</h4>
+    <p>{{ userProfileDetails.email }}</p>
+    <p>{{ userProfileDetails.bio }}</p>
+  </div>
+</div>

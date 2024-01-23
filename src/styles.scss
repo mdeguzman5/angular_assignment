@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+
+// snackbar custom background
+mat-snack-bar-container.success-snackbar {
+  .mdc-snackbar__surface {
+    background-color: #3caf4f !important;
+  }
+}
+
+
+mat-snack-bar-container.fail-snackbar {
+  .mdc-snackbar__surface {
+    background-color: #a23740 !important;
+  }
+}

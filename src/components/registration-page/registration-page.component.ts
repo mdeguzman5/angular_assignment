@@ -9,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { UserProfileService } from '@services/user-profile/user-profile.service';
 import { IUserRegistrationResponse } from '@models/user-profile.model';
-import { ProfileGuard } from '@services/profile-guard/profile-guard';
+import { allWhiteSpaceValidator, emailValidator } from '@validators/custom-validator';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registration-page',
@@ -21,13 +22,15 @@ import { ProfileGuard } from '@services/profile-guard/profile-guard';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   templateUrl: './registration-page.component.html',
   styleUrl: './registration-page.component.scss'
 })
 export class RegistrationPageComponent {
   public registrationForm: FormGroup;
+  private emailPatter = ``
 
   constructor(
     public router: Router,
@@ -35,9 +38,9 @@ export class RegistrationPageComponent {
     private snackBar: MatSnackBar
   ) {
     this.registrationForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.nullValidator, Validators.maxLength(65)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.nullValidator, Validators.maxLength(30)]),
+      name: new FormControl('', [Validators.required, Validators.nullValidator, Validators.maxLength(65), allWhiteSpaceValidator()]),
+      email: new FormControl('', [Validators.required, Validators.email, emailValidator()]),
+      password: new FormControl('', [Validators.required, Validators.nullValidator, Validators.minLength(6), Validators.maxLength(30), allWhiteSpaceValidator()]),
       bio: new FormControl('', [Validators.required, Validators.nullValidator, Validators.maxLength(100)]),
     });
   }
@@ -66,5 +69,14 @@ export class RegistrationPageComponent {
         }
       });
     }
+  }
+
+  get passwordErrorMessage(): string {
+    const passwordControl = this.registrationForm.get('password');
+
+    return passwordControl?.hasError('required') ? 'Password is Required' :
+      passwordControl?.hasError('minlength') ? `Password must be at least ${passwordControl?.errors?.['minlength'].requiredLength} characters` :
+      passwordControl?.hasError('maxlength') ? `Password must be max of ${passwordControl?.errors?.['maxlength'].requiredLength} characters` :
+      passwordControl?.hasError('allWhiteSpace') ? 'Password cannot be all white space' : '';
   }
 }

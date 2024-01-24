@@ -34,7 +34,9 @@
       "@mocks/*": ["src/mocks/*"],
       "@mocks": ["src/mocks"],
       "@services/*": ["src/services/*"],
-      "@services": ["src/services"]
+      "@services": ["src/services"],
+      "@validators/*": ["src/validators/*"],
+      "@validators": ["src/validators"]
     },
   },
   "angularCompilerOptions": {

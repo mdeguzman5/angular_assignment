@@ -7,16 +7,25 @@
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input type="email" matInput placeholder="Ex. johndoe@abc.com" formControlName="email">
+          <mat-error *ngIf="registrationForm?.get('email')!.errors">
+            Please enter a valid email
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Name</mat-label>
           <input type="text" matInput formControlName="name">
+          <mat-error *ngIf="registrationForm?.get('name')!.errors?.['allWhiteSpace']">
+            Name cannot be all white space
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Password</mat-label>
           <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="registrationForm?.get('password')!.errors">
+            {{ passwordErrorMessage }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
